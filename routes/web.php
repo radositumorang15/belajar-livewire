@@ -18,6 +18,9 @@ use App\Livewire\Mobil\MobilList;
 use App\Livewire\Motor\MotorAdd;
 use App\Livewire\Motor\MotorList;   
 use App\Livewire\Form\Form1;
+use App\Livewire\Form\CreatePost;
+use App\Livewire\Form\PostList;
+use App\Livewire\Form\ArticleStats;
 
 
 
@@ -35,4 +38,7 @@ Route::get('/mobil-add', MobilAdd::class)->name('mobil-add');
 Route::get('/mobil-list', MobilList::class)->name('mobil-list');
 Route::get('/motor-add', MotorAdd::class)->name('motor-add');
 Route::get('/motor-list', MotorList::class)->name('motor-list');
-Route::get('/form-1', Form1::class)->name('form-1');
+Route::get('/form-1', Form1::class)->name('form-1');    
+Route::get('/create-post', CreatePost::class)->name('create-post');
+Route::get('/post-list', PostList::class)->name('post-list');
+Route::get('/article-stats', ArticleStats::class)->name('article-stats');

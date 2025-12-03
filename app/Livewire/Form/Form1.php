@@ -12,7 +12,6 @@ class Form1 extends Component
     public $email_input;
     public $password_input;
     public $userYangAkanDiEdit;
-    public $artikel;
 
     public function save()
     {

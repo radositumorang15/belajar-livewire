@@ -3,6 +3,9 @@
 
     <form wire:submit="save">
         <div>
+            <div>
+                @error('nama_input') <span class="error">{{ $message }}</span> @enderror 
+            </div>
             <flux:input type="text" label="Nama" wire:model="nama_input" />
         </div>
         <div>
