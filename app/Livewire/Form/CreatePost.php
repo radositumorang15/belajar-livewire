@@ -6,12 +6,16 @@ use Livewire\Component;
 use App\Livewire\Forms\PostForm;
 use App\Models\Article;
 use Flux\Flux;
+use App\Livewire\Form\Status;
+
 
 class CreatePost extends Component
 {
     public PostForm $postForm;
     public $inputKey;
-    protected $masterKey;
+
+    #[Locked]
+    public $masterKey;
     
     public ?Article $articleYangAkanDiEdit = null;
 
@@ -28,7 +32,8 @@ class CreatePost extends Component
         }
     }
 
-    
+
+
 
     public function save()
     {
@@ -42,6 +47,7 @@ class CreatePost extends Component
         Article::create([
             'title' => $this->postForm->title_input,
             'content' => $this->postForm->content_input,
+            'nama_penulis' => $this->postForm->nama_penulis_input,
         ]);
         
         $this->reset();
@@ -51,7 +57,7 @@ class CreatePost extends Component
             text: 'Data artikel berhasil ditambahkan.',
         );
 
-        return redirect()->to('/post-list');
+        // return redirect()->to('/post-list');
     }
 
     

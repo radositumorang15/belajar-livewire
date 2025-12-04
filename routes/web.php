@@ -21,8 +21,9 @@ use App\Livewire\Form\Form1;
 use App\Livewire\Form\CreatePost;
 use App\Livewire\Form\PostList;
 use App\Livewire\Form\ArticleStats;
-
-
+use App\Livewire\Alpine\AlpineForm;
+use App\Livewire\Alpine\Alpine1;
+use App\Livewire\Tokoban\BanAdd;
 
 Route::get('/', Dashboard::class)->name('dashboard');
 Route::get('/categories', Index::class)->name('categories.index');
@@ -42,3 +43,6 @@ Route::get('/form-1', Form1::class)->name('form-1');
 Route::get('/create-post', CreatePost::class)->name('create-post');
 Route::get('/post-list', PostList::class)->name('post-list');
 Route::get('/article-stats', ArticleStats::class)->name('article-stats');
+Route::get('/alpine-1', Alpine1::class)->name('alpine-1');
+Route::get('/alpine-form', AlpineForm::class)->name('alpine-form');
+Route::get('/ban-add', BanAdd::class)->name('ban-add');

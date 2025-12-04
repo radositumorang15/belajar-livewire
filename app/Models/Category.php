@@ -13,4 +13,11 @@ class Category extends Model
    public function tires(){
     return $this -> hasMany(Tire::class);
    }
+
+   public function mount()
+   {
+    $this->categories = Category::all();
+   }
+
+   
 }

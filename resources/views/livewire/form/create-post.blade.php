@@ -13,13 +13,15 @@
                 @error('postForm.content_input') <span class="error">{{ $message }}</span> @enderror
             </div>
             <flux:input type="text" label="Master Key" wire:model.blur="inputKey" />
-
+            <flux:input type="text" label="Nama Penulis" wire:model.blur="postForm.nama_penulis_input" />
             <div class="flex justify-end mt-4">
                 <flux:button type="submit" variant="primary">
-                    {{ $articleYangAkanDiEdit ? 'Simpan Perubahan' : 'Simpan Baru' }}
+                   simpan
                 </flux:button>
+                
             </div>
         </form>
     </div>
+
 </div>
 

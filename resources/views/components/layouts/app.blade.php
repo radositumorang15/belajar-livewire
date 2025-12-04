@@ -22,7 +22,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="home" href="/" :current="request()->is('/')">Dashboard</flux:navlist.item>
                 <flux:navlist.item icon="tag" href="/categories" :current="request()->is('categories*')">Kategori</flux:navlist.item>
-                <flux:navlist.item icon="truck" href="/tires">Data Ban</flux:navlist.item>
+                <flux:navlist.item icon="truck" href="/ban-add">Data Ban</flux:navlist.item>
             </flux:navlist>
 
             <flux:spacer />
