@@ -9,17 +9,35 @@ use Flux\Flux;
 class BanAdd extends Component
 {
 
-    public $databan;
+    // public $databan;
     public $nama_ban;
     public $harga;
     public $merk;
+    public $isMember = false;
 
-    public function mount(){
-        $this->databan = Databan::all();
-    }
+    public $databanYangAkanDiEdit = false;
+
+    // public function mount(){
+    //     $this->databan = Databan::all();
+    // }
 
 
     public function showModalAddBan(){
+        Flux::modal('modalAddBan')->show();
+    }
+
+
+    public function showModalEditBan(Databan $databan){
+        $this->databanYangAkanDiEdit = $databan;
+        Flux::modal('modalAddBan')->show();
+    }
+
+
+    public function isikanFormEdit(Databan $databan){
+        $this->databanYangAkanDiEdit = $databan;
+        $this->nama_ban = $databan->nama_ban;
+        $this->harga = $databan->harga;
+        $this->merk = $databan->merk;
         Flux::modal('modalAddBan')->show();
     }
 
@@ -31,12 +49,20 @@ class BanAdd extends Component
             'merk' => 'required|string|max:255',
         ]);
 
-        $databan = new Databan();
-        $databan->nama_ban = $this->nama_ban;
-        $databan->harga = $this->harga;
-        $databan->merk = $this->merk;
-        $databan->save();
 
+        if ($this->databanYangAkanDiEdit) {
+            $databan = Databan::findOrFail($this->databanYangAkanDiEdit->id);
+            $databan->nama_ban = $this->nama_ban;
+            $databan->harga = $this->harga;
+            $databan->merk = $this->merk;
+            $databan->save();
+        } else {
+            $databan = new Databan();
+            $databan->nama_ban = $this->nama_ban;
+            $databan->harga = $this->harga;
+            $databan->merk = $this->merk;
+            $databan->save();
+        }
 
         $this->databan = Databan::all();
 
@@ -51,8 +77,24 @@ class BanAdd extends Component
         );
     }
 
+    
+    public function delete(Databan $databan){
+        $databan->delete();
+
+        Flux::toast(
+            heading: 'Changes saved.',
+            text: 'Data ban berhasil dihapus.',
+        );
+
+        $this->reset(['nama_ban', 'harga', 'merk']);
+        
+        
+    }
+
     public function render()
     {
-        return view('livewire.tokoban.ban-add');
+        return view('livewire.tokoban.ban-add', [
+            'databan' => Databan::all(),
+        ]);
     }
 }

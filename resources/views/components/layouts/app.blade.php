@@ -23,6 +23,9 @@
                 <flux:navlist.item icon="home" href="/" :current="request()->is('/')">Dashboard</flux:navlist.item>
                 <flux:navlist.item icon="tag" href="/categories" :current="request()->is('categories*')">Kategori</flux:navlist.item>
                 <flux:navlist.item icon="truck" href="/ban-add">Data Ban</flux:navlist.item>
+                <flux:navlist.item icon="book-open" href="/alpine-1">Artikel</flux:navlist.item>
+                <flux:navlist.item icon="shopping-bag" href="/alpine-form">Beli ban</flux:navlist.item>
+                <flux:navlist.item icon="cube" href="/post-list">alpine</flux:navlist.item>
             </flux:navlist>
 
             <flux:spacer />

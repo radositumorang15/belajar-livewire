@@ -9,6 +9,7 @@ use Flux\Flux;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Log;
 use App\Livewire\Form\Status;
+use App\Models\Databan;
 
 
 class PostList extends Component
@@ -54,7 +55,9 @@ public function rendering($view, $data)
 
     public function render()
     {
-        return view('livewire.form.post-list');
+        return view('livewire.form.post-list',[
+            'databan' => Databan::all(),
+        ]);
     }
 
 

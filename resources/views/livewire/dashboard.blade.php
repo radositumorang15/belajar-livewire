@@ -9,11 +9,11 @@
         
         <flux:card class="flex flex-col gap-2">
             <div class="flex items-center gap-2 text-zinc-500">
-                <flux:icon.truck class="w-5 h-5" />
-                <span class="text-sm font-medium">{{$totalStok}}</span>
+                <flux:icon.cog class="w-5 h-5" />
+                <span class="text-sm font-medium">Jumlah ban</b></span>
             </div>
             <div class="text-3xl font-bold text-zinc-900 dark:text-white">
-                124 <span class="text-sm font-normal text-zinc-500">Unit</span>
+                {{ $totalStok }}<span class="text-sm font-normal text-zinc-500">Unit</span>
             </div>
         </flux:card>
 
@@ -23,7 +23,7 @@
                 <span class="text-sm font-medium">Kategori</span>
             </div>
             <div class="text-3xl font-bold text-zinc-900 dark:text-white">
-                8 <span class="text-sm font-normal text-zinc-500">Jenis</span>
+                {{$totalKategori}}<span class="text-sm font-normal text-zinc-500">Jenis</span>
             </div>
         </flux:card>
 
