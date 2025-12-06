@@ -87,4 +87,137 @@
         </div>
     </div>
 
+    <template x-if="open">
+        <div>Contents...</div>
+    </template>
+
+    <div class="p-4 border rounded mb-4" x-data="{ isAdmin: false, hargaJual: 1500000, hargaModal: 1000000 }">
+        <h2 class="text-xl font-bold mb-2 mt-4">8. Conditional Rendering (x-if)</h2>
+        <label>
+            <input type="checkbox" x-model="isAdmin"> Mode Admin
+        </label>
+        <hr class="my-4">
+    
+        <h3>Ban Bridgestone</h3>
+        <p>Harga Jual: <span x-text="hargaJual"></span></p>
+    
+        <template x-if="isAdmin">
+            <div class="bg-yellow-100 p-2 border border-yellow-500 mt-2">
+                <strong>Info Rahasia:</strong>
+                <p>Harga Modal: <span x-text="hargaModal"></span></p>
+                <button>Edit Modal</button>
+            </div>
+        </template>
+    
+    </div>
+
+
+
+    <div x-data="{ daftarBan: ['Bridgestone', 'Michelin', 'Dunlop'] }">
+        <h2 class="text-xl font-bold mb-2 mt-4">9. Dynamic IDs (x-id)</h2>
+        <template x-for="ban in daftarBan">
+            
+            <div x-id="['stok-input']" class="border p-4 mb-2">
+                
+                <h4 x-text="ban"></h4>
+    
+                <div class="flex items-center gap-2">
+                    <label :for="$id('stok-input')" class="text-sm">Update Stok:</label>
+                    
+                    <input type="number" :id="$id('stok-input')" class="border p-1">
+                </div>
+    
+            </div>
+    
+        </template>
+    </div>
+
+
+
+    <form class="p-4 border rounded mb-4" wire:submit="save">
+        <h2 class="text-xl font-bold mb-2 mt-4">10. $el</h2>
+        <input type="text" wire:model="name">
+    
+        <button 
+            type="submit"
+            @click="$el.innerText = 'Menyimpan...'; $el.disabled = true;"
+        >
+            Simpan Perubahan
+        </button>
+    </form>
+
+    <div class="p-4 border rounded mb-4">
+        <h2 class="text-xl font-bold mb-2 mt-4">11. $store</h2>
+    <div x-data style="margin-bottom: 20px; border: 1px solid blue; padding: 10px;">
+        <h3>Saya Pengendali</h3>
+        <button @click="$store.dataKu.angka++">
+            Tambah Angka (+)
+        </button>
+    </div>
+    
+    <div x-data style="border: 1px solid red; padding: 10px;">
+        <h3>Saya Penonton</h3>
+        Angka sekarang adalah: 
+        <b x-text="$store.dataKu.angka" style="font-size: 20px;"></b>
+    </div>
+    </div>
+
+
+
+    <div class="p-4 border rounded mb-4">
+        <h2 class="text-xl font-bold mb-2 mt-4">12. $watch</h2>
+        <div x-data="{ pesan: '' }" 
+     x-init="$watch('pesan', value => {
+         if (value.length > 10) {
+             alert('Stop! Maksimal 10 karakter saja.');
+         }
+     })">
+    
+    <label>Ketik sesuatu (Maks 10 huruf):</label>
+    <br>
+    <input type="text" x-model="pesan" class="border p-2">
+    
+    <p>Panjang saat ini: <span x-text="pesan.length"></span></p>
 </div>
+    </div>
+
+
+
+    <div class="p-4 border rounded mb-4">
+        <h2 class="text-xl font-bold mb-2 mt-4">13. $dispatch</h2>
+
+    <div x-data>
+        <button @click="$dispatch('buka-modal')">
+            Buka Modal Login
+        </button>
+    </div>
+    
+    <hr>
+    
+    <div 
+        x-data="{ open: false }" 
+        @buka-modal.window="open = true" 
+        x-show="open"
+        style="background: #eee; padding: 20px; border: 1px solid black;"
+    >
+        <h2>Form Login</h2>
+        <p>Masukkan username...</p>
+        <button @click="open = false">Tutup</button>
+    </div>
+    </div>
+
+
+
+
+    <div x-data="{ teks: 'LAMA' }">
+        <span x-ref="tulisan" x-text="teks"></span>
+    
+        <button @click="
+            teks = 'BARU'; 
+            alert($refs.tulisan.innerText); 
+        ">
+            Ubah & Baca
+        </button>
+    </div>
+</div>
+

@@ -24,7 +24,10 @@ use App\Livewire\Form\ArticleStats;
 use App\Livewire\Alpine\AlpineForm;
 use App\Livewire\Alpine\Alpine1;
 use App\Livewire\Tokoban\BanAdd;
+use App\Livewire\Auth\Login;
 
+
+Route::get('/login', Login::class)->name('login');
 Route::get('/', Dashboard::class)->name('dashboard');
 Route::get('/categories', Index::class)->name('categories.index');
 Route::get('/coba-satu', CobaSatu::class)->name('coba-satu');
